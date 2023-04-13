@@ -7,7 +7,7 @@
     "dev": "next dev",
     "postinstall": "prisma generate",
     "lint": "next lint",
-    "start": "next start"
+    "start": "yarn build && next start"
   },
   "dependencies": {
     "@prisma/client": "^4.11.0",
