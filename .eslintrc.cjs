@@ -8,7 +8,11 @@ const config = {
       extends: [
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
       ],
-      files: ["*.ts", "*.tsx"],
+      files: ["*.+(spec|test|stories).*"],
+      rules: {
+        "@typescript-eslint/no-non-null-assertion": 0,
+        "import/no-extraneous-dependencies": 0,
+      },
       parserOptions: {
         project: path.join(__dirname, "tsconfig.json"),
       },

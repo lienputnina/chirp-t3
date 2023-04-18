@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
     "dev": "next dev",
-    "postinstall": "prisma generate",
+    "build": "next build",
+    "start": "yarn build && next start",
     "lint": "next lint",
-    "start": "yarn build && next start"
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.16.2",
@@ -17,6 +18,7 @@
     "@trpc/next": "^10.18.0",
     "@trpc/react-query": "^10.18.0",
     "@trpc/server": "^10.18.0",
+    "dayjs": "^1.11.7",
     "next": "^13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -43,5 +45,8 @@
   },
   "ct3aMetadata": {
     "initVersion": "7.10.3"
+  },
+  "engines": {
+    "node": ">=16.8.0"
   }
 }
