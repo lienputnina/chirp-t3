@@ -2,38 +2,24 @@
   "compilerOptions": {
     "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": false,
+    "allowJs": true,
+    "checkJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "isolatedModules": true,
-    "noEmit": true,
-    "incremental": true,
     "resolveJsonModule": true,
+    "isolatedModules": true,
     "jsx": "preserve",
+    "incremental": true,
+    "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
-    },
-
-    // type checking
-    "strict": true,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "alwaysStrict": true,
-    "exactOptionalPropertyTypes": false,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noPropertyAccessFromIndexSignature": false,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "useUnknownInCatchVariables": true
+    }
   },
   "include": [
     ".eslintrc.cjs",
@@ -41,8 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
-    "**/*.mjs",
-    "src/middleware.ts"
+    "**/*.mjs"
   ],
   "exclude": ["node_modules"]
 }
