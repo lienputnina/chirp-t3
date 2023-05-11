@@ -22,7 +22,7 @@ const CreatePostWizard: FC = () => {
   });
 
   if (!user) return null;
-
+ 
   return (
     <div className="flex w-full gap-3">
       <Image
