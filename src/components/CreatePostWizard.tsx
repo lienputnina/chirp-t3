@@ -7,7 +7,7 @@ import { api } from '~/utils/api';
 import { toast } from 'react-hot-toast';
 import { LoadingSpinner } from './Loading/LoadingSpinner';
 
-const CreatePostWizard: FC = () => {
+export const CreatePostWizard: FC = () => {
   const { user } = useUser();
 
   const [input, setInput] = useState('');
@@ -68,5 +68,3 @@ const CreatePostWizard: FC = () => {
     </div>
   );
 };
-
-export default CreatePostWizard;

@@ -8,18 +8,9 @@ import {
   publicProcedure,
 } from '~/server/api/trpc';
 
-// publicProcedure - a method to generate the function that the client calls
-// stuff returned will be available to all users
-
-const filterUserForClient = (user: User) => {
-  return {
-    id: user.id,
-    profileImageUrl: user.profileImageUrl,
-  };
-};
-
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
+import { filterUserForClient } from '~/server/helpers/filterUserForClients';
 
 const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
@@ -58,7 +49,8 @@ export const postsRouter = createTRPCRouter({
         post,
         author: {
           ...author,
-          username: 'MyUser',
+          username: 'lienputnina',
+          // username: author.username,
         },
       };
     });
