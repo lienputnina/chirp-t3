@@ -15,6 +15,8 @@ import { prisma } from '~/server/db';
 import { PageLayout } from '~/components/PageLayout';
 import Image from 'next/image';
 
+import { ProfileFeed } from './ProfileFeed';
+
 type ProfilePageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const ProfilePage: NextPage<ProfilePageProps> = ({ username }) => {
@@ -44,6 +46,7 @@ const ProfilePage: NextPage<ProfilePageProps> = ({ username }) => {
           {`@${data.username ?? ''}`}
         </div>
         <div className="w-full border-b border-slate-400"></div>
+        <ProfileFeed userId={data.id} />
       </PageLayout>
     </>
   );
