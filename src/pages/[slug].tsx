@@ -1,12 +1,7 @@
 import Head from 'next/head';
 import { api } from '~/utils/api';
 
-import type {
-  GetStaticPaths,
-  GetStaticPropsContext,
-  InferGetStaticPropsType,
-  NextPage,
-} from 'next';
+import type { GetStaticPaths, GetStaticPropsContext, NextPage } from 'next';
 
 import { PageLayout } from '~/components/PageLayout';
 import Image from 'next/image';
@@ -17,7 +12,9 @@ import { appRouter } from '~/server/api/root';
 import { prisma } from '~/server/db';
 import { ProfileFeed } from './ProfileFeed';
 
-type ProfilePageProps = InferGetStaticPropsType<typeof getStaticProps>;
+export interface ProfilePageProps {
+  username: string;
+}
 
 const ProfilePage: NextPage<ProfilePageProps> = ({ username }) => {
   const { data } = api.profile.getUserByUsername.useQuery({
@@ -26,24 +23,31 @@ const ProfilePage: NextPage<ProfilePageProps> = ({ username }) => {
 
   if (!data) return <div>404</div>;
 
+  // ?? data.externalUsername
+
   return (
     <>
       <Head>
         <title>{data.username}</title>
+        {/* ?? data.externalUsername */}
       </Head>
       <PageLayout>
         <div className="relative h-36  bg-slate-600">
           <Image
             src={data.profileImageUrl}
-            alt={`@${data.username ?? ''}'s profile picture`}
-            className="absolute bottom-0 left-0 -mb-[64px] ml-4 border-4 border-black bg-black"
+            alt={`${data.username ?? 'unknown'}'s profile picture`}
+            // alt={`${
+            //   data.username ?? data.externalUsername ?? "unknown"
+            // }'s profile pic`}
             width={128}
             height={128}
+            className="absolute bottom-0 left-0 -mb-[64px] ml-4 rounded-full border-4 border-black bg-black"
           />
         </div>
         <div className="h-[64px]"></div>
         <div className="p-4 text-2xl font-bold">
-          {`@${data.username ?? ''}`}
+          {`@${data.username ?? 'unknown'}`}
+          {/* ?? data.externalUsername */}
         </div>
         <div className="w-full border-b border-slate-400"></div>
         <ProfileFeed userId={data.id} />

@@ -6,6 +6,7 @@ import { api } from '~/utils/api';
 export interface ProfileFeedProps {
   userId: string;
 }
+
 export const ProfileFeed: FC<ProfileFeedProps> = ({ userId }) => {
   const { data, isLoading } = api.posts.getPostsByUserId.useQuery({
     userId: userId,

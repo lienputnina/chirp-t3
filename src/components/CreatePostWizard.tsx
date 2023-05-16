@@ -1,11 +1,11 @@
 import type { FC } from 'react';
 import { useState } from 'react';
-
-import { useUser } from '@clerk/nextjs';
-import Image from 'next/image';
-import { api } from '~/utils/api';
 import { toast } from 'react-hot-toast';
+
+import { UserButton, useUser } from '@clerk/nextjs';
 import { LoadingSpinner } from './Loading/LoadingSpinner';
+
+import { api } from '~/utils/api';
 
 export const CreatePostWizard: FC = () => {
   const { user } = useUser();
@@ -34,12 +34,15 @@ export const CreatePostWizard: FC = () => {
 
   return (
     <div className="flex w-full gap-3">
-      <Image
-        src={user.profileImageUrl}
-        alt="Profile image"
-        className="h-14 w-14 rounded-full"
-        width={56}
-        height={56}
+      <UserButton
+        appearance={{
+          elements: {
+            userButtonAvatarBox: {
+              width: 56,
+              height: 56,
+            },
+          },
+        }}
       />
       <input
         placeholder="Type some text"

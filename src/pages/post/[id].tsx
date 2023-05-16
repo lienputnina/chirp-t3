@@ -1,11 +1,6 @@
 import Head from 'next/head';
 
-import type {
-  GetStaticPaths,
-  GetStaticPropsContext,
-  InferGetStaticPropsType,
-  NextPage,
-} from 'next';
+import type { GetStaticPaths, GetStaticPropsContext, NextPage } from 'next';
 
 import { PageLayout } from '~/components/PageLayout';
 
@@ -16,7 +11,9 @@ import { appRouter } from '~/server/api/root';
 import { prisma } from '~/server/db';
 import { PostView } from '~/components/PostView';
 
-type SinglePostPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+export interface SinglePostPageProps {
+  id: string;
+}
 
 const SinglePostPage: NextPage<SinglePostPageProps> = ({ id }) => {
   const { data } = api.posts.getById.useQuery({

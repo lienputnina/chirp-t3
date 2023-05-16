@@ -5,6 +5,7 @@ import { SignInButton, useUser } from '@clerk/nextjs';
 import { CreatePostWizard } from '~/components/CreatePostWizard';
 import { Feed } from '~/components/Feed';
 import { PageLayout } from '~/components/PageLayout';
+import { GithubPlug } from '~/components/GitHubPlug';
 
 const LandingPage: NextPage = () => {
   const { isLoaded: userLoaded, isSignedIn } = useUser();
@@ -26,6 +27,7 @@ const LandingPage: NextPage = () => {
         {isSignedIn && <CreatePostWizard />}
       </div>
       <Feed />
+      <GithubPlug />
     </PageLayout>
   );
 };
