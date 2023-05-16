@@ -1,20 +1,20 @@
 import Head from 'next/head';
 import { api } from '~/utils/api';
 
-import { createServerSideHelpers } from '@trpc/react-query/server';
 import type {
   GetStaticPaths,
   GetStaticPropsContext,
   InferGetStaticPropsType,
   NextPage,
 } from 'next';
-import superjson from 'superjson';
-import { appRouter } from '~/server/api/root';
-import { prisma } from '~/server/db';
 
 import { PageLayout } from '~/components/PageLayout';
 import Image from 'next/image';
 
+import { createServerSideHelpers } from '@trpc/react-query/server';
+import superjson from 'superjson';
+import { appRouter } from '~/server/api/root';
+import { prisma } from '~/server/db';
 import { ProfileFeed } from './ProfileFeed';
 
 type ProfilePageProps = InferGetStaticPropsType<typeof getStaticProps>;
