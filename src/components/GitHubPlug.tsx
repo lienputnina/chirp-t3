@@ -3,7 +3,7 @@ import type { FC } from 'react';
 export const GithubPlug: FC = () => {
   return (
     <div className="flex items-center justify-between p-4 text-xl">
-      <a href="https://github.com/lienputnina/scrabble-away-lv">
+      <a href="https://github.com/lienputnina/chirp-t3">
         {/* change repo name later */}
         <div className="flex items-center justify-center gap-2">
           <svg
