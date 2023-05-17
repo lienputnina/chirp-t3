@@ -1,14 +1,18 @@
+import type {
+  GetStaticPaths,
+  GetStaticProps,
+  GetStaticPropsContext,
+  NextPage,
+} from 'next';
 import Head from 'next/head';
-
-import type { GetStaticPaths, GetStaticPropsContext, NextPage } from 'next';
-
-import { PageLayout } from '~/components/PageLayout';
 
 import { api } from '~/utils/api';
 import { createServerSideHelpers } from '@trpc/react-query/server';
 import superjson from 'superjson';
 import { appRouter } from '~/server/api/root';
+
 import { prisma } from '~/server/db';
+import { PageLayout } from '~/components/PageLayout';
 import { PostView } from '~/components/PostView';
 
 export interface SinglePostPageProps {
@@ -34,7 +38,9 @@ const SinglePostPage: NextPage<SinglePostPageProps> = ({ id }) => {
   );
 };
 
-export const getStaticProps = async (context: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext,
+) => {
   const helpers = createServerSideHelpers({
     router: appRouter,
     ctx: { prisma, userId: null },

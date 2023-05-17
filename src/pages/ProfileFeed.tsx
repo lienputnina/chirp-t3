@@ -7,7 +7,7 @@ export interface ProfileFeedProps {
   userId: string;
 }
 
-export const ProfileFeed: FC<ProfileFeedProps> = ({ userId }) => {
+const ProfileFeed: FC<ProfileFeedProps> = ({ userId }) => {
   const { data, isLoading } = api.posts.getPostsByUserId.useQuery({
     userId: userId,
   });
@@ -24,3 +24,5 @@ export const ProfileFeed: FC<ProfileFeedProps> = ({ userId }) => {
     </div>
   );
 };
+
+export default ProfileFeed;
